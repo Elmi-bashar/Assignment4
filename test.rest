@@ -1,0 +1,40 @@
+### Home Route
+GET http://localhost:3000/
+
+### Data Route
+GET http://localhost:3000/data
+
+### Index Route
+GET http://localhost:3000/index
+
+### POST new data
+POST http://localhost:3000/data
+Content-Type: application/json
+
+{
+  "firstname": "Bashar",
+  "surname": "Elmi"
+}
+
+### GET data by ID
+GET http://localhost:3000/data/3
+
+### UPDATE data
+PUT http://localhost:3000/data/3
+Content-Type: application/json
+
+{
+  "firstname": "Bashar",
+  "surname": "Elmi Updated"
+}
+
+### DELETE data
+DELETE http://localhost:3000/data/6
+
+### SEARCH data by forename
+POST http://localhost:3000/data/search
+Content-Type: application/json
+
+{
+  "forename": "Roy"
+}
