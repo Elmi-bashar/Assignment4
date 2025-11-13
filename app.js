@@ -1,21 +1,22 @@
-// app.js
-const express = require('express');
+const express = require("express");
 const app = express();
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
 
-app.use(express.json()); // parse JSON
+// Middleware
+app.use(express.json());
 
-// Import routes
-const homeRoute = require('./api/home');
-const dataRoute = require('./api/data');
-const indexRoute = require('./api/index');
+// Routes
+const dataRouter = require("./api/data.js");
+app.use("/data", dataRouter);
 
-// Use routes
-app.use('/', homeRoute);
-app.use('/data', dataRoute);
-app.use('/index', indexRoute);
+// Swagger
+const swaggerDocument = YAML.load("./openapi.yaml"); // make sure the file is named openapi.yaml
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Start server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
 });

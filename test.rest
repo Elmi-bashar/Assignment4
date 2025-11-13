@@ -31,8 +31,9 @@ Content-Type: application/json
 ### DELETE data
 DELETE http://localhost:3000/data/6
 
-### SEARCH data by forename
-POST http://localhost:3000/data/search
+### QUERY data by forename
+POST http://localhost:3000/data/query
+
 Content-Type: application/json
 
 {
